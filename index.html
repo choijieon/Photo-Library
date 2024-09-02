@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACCD EOP Photo Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include the necessary JS libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="gray-box">
+        <div class="container">
+            <div class="switch-section">
+                <label class="switch">
+                    <input type="checkbox" id="nightModeSwitch">
+                    <span class="slider round"></span>
+                </label>
+                <span id="switchLabel">Night Mode</span>
+            </div>
+            <div class="left-side">
+                <h2>ACCD EOP Photo Library</h2>
+                <div class="upload-section">
+                    <input type="file" id="imageInput" accept="image/*" multiple>
+                    <button id="addPhotosButton">Add Photos</button>
+                </div>
+
+                <div class="search-section">
+                    <input type="text" id="searchInput" placeholder="Search by title or tag">
+                </div>
+
+                <div class="gallery-section">
+                    <h3>Photo Gallery</h3>
+                    <div id="gallery" class="photo-grid"></div>
+                </div>
+            </div>
+
+            <div class="right-side">
+                <div class="detail-section" id="detailSection" style="display:none;">
+                    <h2>Photo Details</h2>
+                    <img id="detailImage" src="" alt="Selected Photo">
+
+                    <!-- Title Section -->
+                    <div class="title-section">
+                        <h3>Edit Title:</h3>
+                        <input type="text" id="titleInput" placeholder="Enter a title for the photo">
+                        <div class="button-group">
+                            <button id="saveTitleButton">Save</button>
+                            <button id="editTitleButton">Edit Title</button>
+                        </div>
+                    </div>
+
+                    <!-- Author Selection Section -->
+                    <div class="author-section">
+                        <h3>Select Author:</h3>
+                        <button class="author-button" data-author="Jieon">Jieon</button>
+                        <button class="author-button" data-author="Jonathan">Jonathan</button>
+                        <button class="author-button" data-author="Heidrun">Heidrun</button>
+                        <input type="text" id="manualAuthorInput" placeholder="Enter a custom author">
+                        <button id="addAuthorButton">Add Author</button>
+                        <div id="authorOutput"></div>
+                    </div>
+
+                    <!-- Pre-selected Tags Section -->
+                    <div class="pre-selected-tag-section">
+                        <h3>Add Pre-selected Tags:</h3>
+                        <button class="pre-tag-button" data-tag="ACCD">ACCD</button>
+                        <button class="pre-tag-button" data-tag="EOP">EOP</button>
+                        <button class="pre-tag-button" data-tag="LCA">LCA</button>
+                        <button class="pre-tag-button" data-tag="Case Study">Case Study</button>
+                    </div>
+
+                    <!-- Custom Tags Section -->
+                    <div class="manual-tag-section">
+                        <h3>Add Custom Tags:</h3>
+                        <input type="text" id="manualTagInput" placeholder="Enter a custom tag">
+                        <button id="addTagButton">Add Tag</button>
+                        <div id="manualTagsOutput"></div>
+                    </div>
+
+                    <!-- Export and Download Button Section -->
+                    <div class="export-section">
+                        <button id="exportButton">Export to Excel</button>
+                        <button id="downloadButton">Download Image</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include your JavaScript file -->
+    <script src="photoLibrary.js"></script>
+</body>
+</html>

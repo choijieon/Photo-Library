@@ -1,0 +1,554 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF; /* White for day mode */
+    color: #000000; /* Black for text in day mode */
+    transition: background-color 0.3s, color 0.3s;
+    height: 100vh;
+    overflow: hidden; /* Prevents scrolling */
+}
+
+body.night-mode {
+    background-color: #121212; /* Dark background for night mode */
+    color: #FFFFFF;
+}
+
+/* Container for the gray box */
+.gray-box {
+    background-color: #f0f0f0; /* Light gray background */
+    height: 100vh; /* Matches the height of the window */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Allows scrolling inside the box if content overflows */
+}
+
+/* Rest of your existing styles... */
+
+/* Container to hold both sides */
+.container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%; /* Ensure it fills the height */
+}
+
+/* Left and Right side styling */
+.left-side, .right-side {
+    width: 48%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    transition: background-color 0.3s;
+}
+
+body.night-mode .left-side, body.night-mode .right-side {
+    background-color: #333;
+    color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Centering the Photo Gallery UI */
+.gallery-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Night Mode Toggle */
+.switch-section {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Additional styles as needed... */
+
+/* Switch styling */
+.switch {
+    width: 50px; /* Adjusted width */
+    height: 24px; /* Adjusted height */
+    position: relative;
+    display: inline-block;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px; /* Adjusted size of the circle */
+    width: 20px; /* Adjusted size of the circle */
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #FF4F00; /* ArtCenter Orange */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Upload Section */
+.upload-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#addPhotosButton {
+    background-color: #FF4F00; /* ArtCenter Orange */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#addPhotosButton:hover {
+    background-color: #E54600; /* Slightly darker orange for hover */
+}
+
+body.night-mode #addPhotosButton {
+    background-color: #FF4F00; /* Same orange in night mode */
+}
+
+body.night-mode #addPhotosButton:hover {
+    background-color: #E54600;
+}
+
+/* Search Section */
+.search-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+body.night-mode #searchInput {
+    background-color: #333;
+    color: #FFFFFF;
+    border-color: #555;
+}
+
+/* Gallery Section */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 15px;
+    justify-content: center;
+}
+
+.photo-tile {
+    position: relative;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.photo-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.photo-tile img {
+    display: block;
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.photo-title {
+    padding: 5px;
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+}
+
+body.night-mode .photo-title {
+    color: #333;
+}
+
+.quick-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    background-color: #FF4F00;
+    color: white;
+    border-radius: 0 0 10px 10px;
+}
+
+.quick-actions button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.quick-actions button:hover {
+    text-decoration: underline;
+}
+
+body.night-mode .quick-actions {
+    background-color: #FF4F00;
+}
+
+/* Detail Section */
+.detail-section {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+body.night-mode .detail-section {
+    background-color: #333;
+    color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+#detailImage {
+    max-width: 100%;
+    max-height: 200px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+/* Title Section */
+.title-section {
+    margin-bottom: 20px;
+}
+
+#titleInput {
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+body.night-mode #titleInput {
+    background-color: #333;
+    color: #FFFFFF;
+    border-color: #555;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#saveTitleButton,
+#editTitleButton {
+    background-color: #FF4F00; /* ArtCenter Orange */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#saveTitleButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#editTitleButton:hover {
+    background-color: #E54600;
+}
+
+body.night-mode #saveTitleButton,
+body.night-mode #editTitleButton {
+    background-color: #FF4F00; /* Keep orange in night mode */
+}
+
+body.night-mode #editTitleButton:hover {
+    background-color: #E54600;
+}
+
+/* Author Selection Section */
+.author-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.author-section h3 {
+    margin-bottom: 10px;
+    color: #FF4F00;
+}
+
+body.night-mode .author-section h3 {
+    color: #FF4F00;
+}
+
+.author-button {
+    background-color: #FF4F00;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.author-button:hover {
+    background-color: #E54600;
+}
+
+body.night-mode .author-button {
+    background-color: #FF4F00;
+}
+
+body.night-mode .author-button:hover {
+    background-color: #E54600;
+}
+
+#manualAuthorInput {
+    padding: 10px;
+    width: 80%;
+    max-width: 300px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+body.night-mode #manualAuthorInput {
+    background-color: #333;
+    color: #FFFFFF;
+    border-color: #555;
+}
+
+#addAuthorButton {
+    background-color: #FF4F00;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#addAuthorButton:hover {
+    background-color: #E54600;
+}
+
+body.night-mode #addAuthorButton {
+    background-color: #FF4F00;
+}
+
+body.night-mode #addAuthorButton:hover {
+    background-color: #E54600;
+}
+
+#authorOutput .label {
+    display: inline-block;
+    background-color: #FF4F00;
+    color: white;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+body.night-mode #authorOutput .label {
+    background-color: #FF4F00;
+}
+
+#authorOutput .label span {
+    font-weight: normal;
+    font-size: 12px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+/* Pre-selected Tags Section */
+.pre-selected-tag-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.pre-selected-tag-section h3 {
+    margin-bottom: 10px;
+    color: #FF4F00;
+}
+
+body.night-mode .pre-selected-tag-section h3 {
+    color: #FF4F00;
+}
+
+.pre-tag-button {
+    background-color: #FF4F00;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.pre-tag-button:hover {
+    background-color: #E54600;
+}
+
+body.night-mode .pre-tag-button {
+    background-color: #FF4F00;
+}
+
+body.night-mode .pre-tag-button:hover {
+    background-color: #E54600;
+}
+
+/* Custom Tags Section */
+.manual-tag-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.manual-tag-section h3 {
+    margin-bottom: 10px;
+    color: #FF4F00;
+}
+
+body.night-mode .manual-tag-section h3 {
+    color: #FF4F00;
+}
+
+#manualTagInput {
+    padding: 10px;
+    width: 80%;
+    max-width: 300px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+body.night-mode #manualTagInput {
+    background-color: #333;
+    color: #FFFFFF;
+    border-color: #555;
+}
+
+#addTagButton {
+    background-color: #FF4F00;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#addTagButton:hover {
+    background-color: #E54600;
+}
+
+body.night-mode #addTagButton {
+    background-color: #FF4F00;
+}
+
+body.night-mode #addTagButton:hover {
+    background-color: #E54600;
+}
+
+#manualTagsOutput .label {
+    display: inline-block;
+    background-color: #FF4F00;
+    color: white;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+body.night-mode #manualTagsOutput .label {
+    background-color: #FF4F00;
+}
+
+#manualTagsOutput .label span {
+    font-weight: normal;
+    font-size: 12px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+/* Export and Download Button Section */
+.export-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#exportButton,
+#downloadButton {
+    background-color: #FF4F00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+#exportButton:hover,
+#downloadButton:hover {
+    background-color: #E54600;
+}
+
+body.night-mode #exportButton,
+body.night-mode #downloadButton {
+    background-color: #FF4F00;
+}
+
+body.night-mode #exportButton:hover,
+body.night-mode #downloadButton:hover {
+    background-color: #E54600;
+}
